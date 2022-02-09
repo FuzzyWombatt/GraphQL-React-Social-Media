@@ -1,0 +1,3 @@
+# WIP-GraphQL-React-Social-Media
+
+Work in Progress social media app that creates threads and comments about enviromental issues(should change to something better like football)....
