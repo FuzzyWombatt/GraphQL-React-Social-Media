@@ -1,0 +1,28 @@
+{
+  "name": "assessment-4-gql-fuzzywombatt",
+  "version": "1.0.0",
+  "description": "[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6662169&assignment_repo_type=AssignmentRepo)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "npm start --prefix server ",
+    "client": "npm start --prefix client",
+    "clientinstall": "npm install --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://FuzzyWombatt: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@github.com/The-Software-Guild/assessment-4-gql-FuzzyWombatt.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Software-Guild/assessment-4-gql-FuzzyWombatt/issues"
+  },
+  "homepage": "https://github.com/The-Software-Guild/assessment-4-gql-FuzzyWombatt#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "create-react-app": "^5.0.0"
+  }
+}
