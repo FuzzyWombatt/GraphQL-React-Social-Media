@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const Jwt = require('jsonwebtoken');
 
-const data = require("../config/default.json");
+const data = require('../config/default.json');
 
 //exporting as anymous function for middleware routing in express
 module.exports = (context) => {
@@ -16,7 +16,6 @@ module.exports = (context) => {
 
         return decoded.user;
     } catch (err) {
-        throw new AuthenticationError('Invalid token')
+        throw new AuthenticationError('Invalid token');
     }
-
-}
+};

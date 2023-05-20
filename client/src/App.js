@@ -26,9 +26,10 @@ import Home from './components/pages/Home';
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Post from './components/posts/Post'
+import Post from './components/posts/Post';
 
 library.add(
+    faFolderPlus,
     faInfoCircle,
     faHome,
     faSignOutAlt,
@@ -45,14 +46,14 @@ library.add(
     faArrowDown,
     faUser,
     faRecycle,
-    faClone,
+    faClone
 );
 
 const App = () => {
     return (
         <Router>
             <Navbar title={'Enviromental Tracker'} icon={'recycle'} />
-            <div className='flex flex-col h-full pt-24'>
+            <div className='flex flex-col flex-grow pt-20 pb-2'>
                 <Routes>
                     <Route exact path='/posts/:_id' element={<Post />} />
                     <Route exact path='/register' element={<Register />} />

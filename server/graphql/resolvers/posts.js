@@ -2,19 +2,19 @@ const { AuthenticationError } = require('apollo-server-express');
 const auth = require('../../middleware/auth');
 
 const Post = require('../../models/Post');
-const User = require('../../models/User')
+const User = require('../../models/User');
 
 module.exports = {
     Query: {
-        async getPosts(){
+        async getPosts() {
             try {
-                const posts = await Post.find().sort({totalvotes: -1});
-                return posts
+                const posts = await Post.find().sort({ totalvotes: -1 });
+                return posts;
             } catch (err) {
                 throw new Error(err);
             }
         },
-        async getPost(_, { postId }){
+        async getPost(_, { postId }) {
             try {
                 const post = await Post.findById(postId);
                 if (post) {
@@ -30,8 +30,8 @@ module.exports = {
     Mutation: {
         async createPost(_, { title, body }, context) {
             let user = auth(context);
-            
-            user = await User.findById(user.id)
+
+            user = await User.findById(user.id);
             if (!body) {
                 throw new Error('Post body must not be empty');
             }
@@ -55,7 +55,7 @@ module.exports = {
             const user = auth(context);
 
             try {
-                let post = await Post.findById(postId);    
+                let post = await Post.findById(postId);
 
                 if (user.id === post.user.toString()) {
                     await Post.findByIdAndDelete(postId);
@@ -71,12 +71,12 @@ module.exports = {
         async editPost(_, { postId, body }, context) {
             const user = auth(context);
 
-            let update = {}
-            
+            let update = {};
+
             if (!body) {
                 throw new Error('Post body must not be empty');
-            }else{
-                update.body = body
+            } else {
+                update.body = body;
                 update.dateEdited = Date.now();
             }
 
@@ -87,7 +87,7 @@ module.exports = {
                     post = await Post.findByIdAndUpdate(
                         postId,
                         { $set: update },
-                        { new: true },
+                        { new: true }
                     );
                     return 'Post edited successfully';
                 } else {
@@ -97,11 +97,11 @@ module.exports = {
                 throw new Error(err);
             }
         },
-         //TODO: upvote/downvote mutations
+        //TODO: upvote/downvote mutations
     },
     Subscription: {
         newPost: {
-          subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST')
-        }
-    }
+            subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_POST'),
+        },
+    },
 };

@@ -39,7 +39,7 @@ const AddComment = ({ postId }) => {
             setModal(true);
         }
     };
-    console.log(body)
+
     const handleSubmit = (eve) => {
         eve.preventDefault();
         createComment({
@@ -59,48 +59,55 @@ const AddComment = ({ postId }) => {
             {showModal ? (
                 <button
                     className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '
-                    onClick={handleClick}>
+                    onClick={handleClick}
+                >
                     Cancel Add Comment
                     <FontAwesomeIcon icon='window-close' className='ml-2' />
                 </button>
             ) : (
                 <button
                     className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '
-                    onClick={handleClick}>
+                    onClick={handleClick}
+                >
                     Add Comment
                     <FontAwesomeIcon icon='folder-plus' className='ml-2' />
                 </button>
             )}
             <div
                 style={showModal ? {} : { display: 'none' }}
-                className='w-11/12 sm:w-2/3 md:w-1/2 xl:w-1/3 mb-4 self-center'>
+                className='w-11/12 sm:w-2/3 md:w-1/2 xl:w-1/3 mb-4 self-center'
+            >
                 <form
                     className='flex flex-col border-2'
                     onSubmit={(eve) => handleSubmit(eve)}
-                    onReset={handleReset}>
+                    onReset={handleReset}
+                >
                     <Header
                         header={'Add Comment'}
                         sx={{ marginBottom: '1.5rem', padding: '.75rem' }}
                     />
                     <label className='w-11/12 self-center'>Body:</label>
-                    <input
+                    <textarea
                         required
                         className='w-11/12 self-center border-2 mb-6'
                         type='text'
                         placeholder='Enter a Comment Body'
                         name='body'
                         value={body}
+                        style={{minHeight: '100px'}}
                         onChange={(eve) => handleChange(eve)}
                     />
                     <button
                         type='reset'
-                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '>
+                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '
+                    >
                         Clear{' '}
                         <FontAwesomeIcon icon='undo-alt' className='ml-2' />
                     </button>
                     <button
                         type='submit'
-                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '>
+                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '
+                    >
                         Add Post
                         <FontAwesomeIcon icon='clone' className='ml-2' />
                     </button>
@@ -113,9 +120,9 @@ const AddComment = ({ postId }) => {
 const GET_COMMENTS = gql`
     query ($postId: ID!) {
         getComments(postId: $postId) {
-            body,
-            user,
-            post, 
+            body
+            user
+            post
             id
         }
     }
@@ -124,7 +131,7 @@ const GET_COMMENTS = gql`
 const CREATE_COMMENT = gql`
     mutation ($postId: ID!, $body: String!) {
         createComment(postId: $postId, body: $body) {
-            body,
+            body
             user
         }
     }

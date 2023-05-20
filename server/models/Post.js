@@ -1,47 +1,51 @@
-const {SchemaTypes: SchemaTypes, Schema: Schema, model: model} = require('mongoose')
+const {
+    SchemaTypes: SchemaTypes,
+    Schema: Schema,
+    model: model,
+} = require('mongoose');
 
 const PostSchema = new Schema({
-    user:{
+    user: {
         type: SchemaTypes.ObjectId,
-        ref: 'user'
+        ref: 'user',
     },
-    creator:{
+    creator: {
         type: String,
-        required: true
-    },   
+        required: true,
+    },
     title: {
         type: String,
-        required: true
+        required: true,
     },
     body: {
         type: String,
-        required: true
+        required: true,
     },
     upvotes: {
         type: Array,
-        default: []
+        default: [],
     },
     downvotes: {
         type: Array,
-        default: []
+        default: [],
     },
     totalVote: {
         type: Number,
-        default: 0
+        default: 0,
     },
     commentCount: {
         type: Number,
-        default: 0
+        default: 0,
     },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     dateEdited: {
         type: Date,
-        default: null
-    }
-})
+        default: null,
+    },
+});
 
 const Post = model('post', PostSchema);
 

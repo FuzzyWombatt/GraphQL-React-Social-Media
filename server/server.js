@@ -1,19 +1,19 @@
 const express = require('express');
-const { ApolloServer} = require('apollo-server-express');
-const {PubSub} = require('graphql-subscriptions')
+const { ApolloServer } = require('apollo-server-express');
+const { PubSub } = require('graphql-subscriptions');
 const cors = require('cors');
 const resolvers = require('./graphql/resolvers');
 const typeDefs = require('./graphql/typeDefs');
 
 const connectDB = require('./config/db');
 const usersRouter = require('./routes/usersRouter');
-const authRouter = require('./routes/authRouter')
+const authRouter = require('./routes/authRouter');
 
 const startApolloServer = async () => {
     const app = express();
 
     const pubsub = new PubSub();
-    
+
     connectDB();
 
     const server = new ApolloServer({
@@ -21,15 +21,15 @@ const startApolloServer = async () => {
         typeDefs,
         resolvers,
         //this is to access express objects from apollo context
-        context: async({req}) => ({req, pubsub}),
+        context: async ({ req }) => ({ req, pubsub }),
     });
     await server.start();
 
-    app.use(express.json({extended: false}));
+    app.use(express.json({ extended: false }));
     app.use(cors());
 
-    app.use('/api/users',usersRouter);
-    app.use('/api/auth',authRouter);
+    app.use('/api/users', usersRouter);
+    app.use('/api/auth', authRouter);
 
     server.applyMiddleware({ app });
 

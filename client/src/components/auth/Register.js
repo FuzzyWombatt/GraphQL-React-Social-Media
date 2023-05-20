@@ -29,7 +29,6 @@ const Register = () => {
         setUser({ ...user, [eve.target.name]: eve.target.value });
     };
 
-
     const handleSubmit = (eve) => {
         eve.preventDefault();
         register({
@@ -40,15 +39,18 @@ const Register = () => {
     };
 
     if (isAuthenticated) return <Navigate to='/' />;
-    
+
     return (
         <div className='grid h-full'>
-            <form className='flex flex-col w-400 border-2 rounded-lg self-center justify-self-center' onSubmit={handleSubmit}>
-            <Header
-                header={'Register New Account'}
-                sx={{ padding: '1.25rem', borderRadius: '6px 6px 0 0' }}
-            />
-            <div className='flex flex-col relative pt-10 pl-10 pr-10'>
+            <form
+                className='flex flex-col w-400 border-2 rounded-lg self-center justify-self-center'
+                onSubmit={handleSubmit}
+            >
+                <Header
+                    header={'Register New Account'}
+                    sx={{ padding: '1.25rem', borderRadius: '6px 6px 0 0' }}
+                />
+                <div className='flex flex-col relative pt-10 pl-10 pr-10'>
                     <input
                         required
                         className='border-b-2 bg-transparent text-steel-blue focus:outline-none focus:border-blue-300'
@@ -93,7 +95,8 @@ const Register = () => {
                     />
                     <label
                         className='absolute  text-steel-blue'
-                        htmlFor='password'>
+                        htmlFor='password'
+                    >
                         {passwordWave.map((char, ind) => {
                             return (
                                 <Wave key={uuidv4()} char={char} ind={ind} />
@@ -112,7 +115,8 @@ const Register = () => {
                     />
                     <label
                         className='absolute  text-steel-blue'
-                        htmlFor='passwordCheck'>
+                        htmlFor='passwordCheck'
+                    >
                         {passwordCheckWave.map((char, ind) => {
                             return (
                                 <Wave key={uuidv4()} char={char} ind={ind} />
@@ -120,12 +124,13 @@ const Register = () => {
                         })}
                     </label>
                 </div>
-                 <div className='pt-10 pl-10 pr-10 mb-6'>     
-                <button
-                    className='w-full pt-3 pb-3 bg-steel-blue text-white cursor-pointer font-Equinox hover:bg-blue-300 rounded-md'
-                    type='submit'>
-                    Register
-                </button>
+                <div className='pt-10 pl-10 pr-10 mb-6'>
+                    <button
+                        className='w-full pt-3 pb-3 bg-steel-blue text-white cursor-pointer font-Equinox hover:bg-blue-300 rounded-md'
+                        type='submit'
+                    >
+                        Register
+                    </button>
                 </div>
             </form>
         </div>

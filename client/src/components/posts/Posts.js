@@ -8,11 +8,12 @@ import PostItem from './PostItem';
 
 const Posts = () => {
     const authContext = useContext(AuthContext);
+
     const { error, data, loading } = useQuery(GET_POSTS);
 
     const { isAuthenticated } = authContext;
 
-    if (loading){
+    if (loading) {
         return (
             <div className='self-center'>
                 <Spinner />
@@ -24,9 +25,9 @@ const Posts = () => {
     return (
         <Fragment>
             {isAuthenticated ? <AddPost /> : null}
-            <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mr-4 ml-4 mb-2 w-11/12 self-center'>
+            <div className='grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-4 mr-4 ml-4 mb-2 w-11/12 self-center'>
                 {data.getPosts.map((post) => {
-                    return <PostItem key={post.id} post={post}/>;
+                    return <PostItem key={post.id} post={post} />;
                 })}
             </div>
         </Fragment>

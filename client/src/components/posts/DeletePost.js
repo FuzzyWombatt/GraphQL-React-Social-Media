@@ -28,8 +28,10 @@ const DeletePost = ({ userId, postId }) => {
                 {user.id === userId ? (
                     <button
                         className='bg-steel-blue text-center text-white border-2 hover:bg-blue-300  block pt-1 pb-1'
-                        onClick={handleClick}>
-                        Delete <FontAwesomeIcon icon='trash-alt' className='ml-2' />
+                        onClick={handleClick}
+                    >
+                        Delete{' '}
+                        <FontAwesomeIcon icon='trash-alt' className='ml-2' />
                     </button>
                 ) : null}
             </Fragment>

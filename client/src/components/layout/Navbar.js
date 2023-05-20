@@ -8,7 +8,7 @@ import AuthContext from '../../context/auth/authContext';
 const Navbar = ({ title, icon }) => {
     const authContext = useContext(AuthContext);
 
-    const { isAuthenticated, logout, user } = authContext;
+    const { isAuthenticated, logout } = authContext;
 
     const handleClick = () => {
         logout();
@@ -24,7 +24,8 @@ const Navbar = ({ title, icon }) => {
             </li>
             <button
                 className='hover:text-blue-300 flex flex-col items-center self-center cursor-pointer m-2'
-                onClick={handleClick}>
+                onClick={handleClick}
+            >
                 <FontAwesomeIcon icon='sign-out-alt' />
                 <p>Logout</p>
             </button>

@@ -7,13 +7,17 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "npm start --prefix server ",
     "client": "npm start --prefix client",
-    "clientinstall": "npm install --prefix client"
+    "client:install": "npm ci --prefix client",
+    "server:install": "npm ci --prefix server",
+    "project:install": "npm ci && npm run client:install && npm run server:install",
+    "prettier:format": "prettier **/* --write"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^7.0.0",
-    "create-react-app": "^5.0.0"
+    "create-react-app": "^5.0.0",
+    "prettier": "^2.8.8"
   }
 }

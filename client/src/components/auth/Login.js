@@ -36,8 +36,11 @@ const Login = () => {
     if (isAuthenticated) return <Navigate to='/' />;
 
     return (
-        <div className='grid h-full'>
-            <form className='pb-6 flex flex-col w-400 border-2 rounded-lg self-center justify-self-center' onSubmit={handleSubmit}>
+        <div className='flex flex-col h-full justify-center mb-20'>
+            <form
+                className='pb-6 flex flex-col w-400 border-2 rounded-lg self-center justify-self-center'
+                onSubmit={handleSubmit}
+            >
                 <Header
                     header={'Account Login'}
                     sx={{ padding: '1.25rem', borderRadius: '6px 6px 0 0' }}
@@ -70,7 +73,8 @@ const Login = () => {
                     />
                     <label
                         className='absolute  text-steel-blue'
-                        htmlFor='password'>
+                        htmlFor='password'
+                    >
                         {passwordWave.map((char, ind) => {
                             return (
                                 <Wave key={uuidv4()} char={char} ind={ind} />
@@ -81,7 +85,8 @@ const Login = () => {
                 <div className='pl-10 pr-10 mb-6'>
                     <button
                         className='w-full pt-3 pb-3 bg-steel-blue text-white cursor-pointer font-Equinox hover:bg-blue-300 rounded-md'
-                        type='submit'>
+                        type='submit'
+                    >
                         Login
                     </button>
                 </div>

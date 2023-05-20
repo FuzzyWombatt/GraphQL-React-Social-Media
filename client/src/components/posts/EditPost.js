@@ -9,7 +9,7 @@ const EditPost = ({ userId }) => {
     const { user, isAuthenticated } = authContext;
 
     const handleClick = () => {
-        console.log('edit post logic goes here')
+        console.log('edit post logic goes here');
     };
 
     if (isAuthenticated && user !== null)
@@ -18,8 +18,10 @@ const EditPost = ({ userId }) => {
                 {user.id === userId ? (
                     <button
                         className='bg-steel-blue text-center text-white border-2 hover:bg-blue-300  block pt-1 pb-1'
-                        onClick={handleClick}>
-                        Edit <FontAwesomeIcon icon='exchange-alt' className='ml-2' />
+                        onClick={handleClick}
+                    >
+                        Edit{' '}
+                        <FontAwesomeIcon icon='exchange-alt' className='ml-2' />
                     </button>
                 ) : null}
             </Fragment>

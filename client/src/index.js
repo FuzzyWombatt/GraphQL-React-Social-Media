@@ -26,7 +26,6 @@ const authLink = setContext(() => {
     };
 });
 
-
 const client = new ApolloClient({
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(),
@@ -40,7 +39,7 @@ ReactDOM.render(
             </AuthState>
         </ApolloProvider>
     </React.StrictMode>,
-    document.getElementById('root'),
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

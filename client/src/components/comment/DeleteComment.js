@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import { gql, useMutation } from '@apollo/client';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DeleteComment = ({ userId, postId, commentId }) => {
     const authContext = useContext(AuthContext);
@@ -30,7 +31,13 @@ const DeleteComment = ({ userId, postId, commentId }) => {
         return (
             <Fragment>
                 {user.id === userId ? (
-                    <button onClick={handleClick}>delete button</button>
+                     <button
+                     className='bg-steel-blue text-center text-white border-2 hover:bg-blue-300  block pt-1 pb-1 px-2 mt-1'
+                     onClick={handleClick}
+                 >
+                     Delete{' '}
+                     <FontAwesomeIcon icon='trash-alt' className='ml-2' />
+                 </button>
                 ) : null}
             </Fragment>
         );

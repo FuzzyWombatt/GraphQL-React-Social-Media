@@ -14,19 +14,17 @@ import {
 
 import { useApolloClient } from '@apollo/client';
 
-
 const AuthState = (props) => {
     const initialState = {
         token: localStorage.getItem('token'),
-        user: null,
-        isAuthenticated: null,
+        user: JSON.parse(localStorage.getItem('user')),
+        isAuthenticated: localStorage.getItem('token') ? true : false,
         loading: true,
         error: null,
     };
 
-    const client = useApolloClient()
+    const client = useApolloClient();
     const [state, dispatch] = useReducer(authReducer, initialState);
-
 
     //Register User
     const register = async (data) => {
@@ -40,16 +38,15 @@ const AuthState = (props) => {
             const res = await axios.post(
                 'http://localhost:5005/api/users',
                 data,
-                config,
+                config
             );
 
-            console.log(res.data)
+            console.log(res.data);
 
             dispatch({
                 type: REGISTER_SUCCESS,
                 payload: res.data,
             });
-
         } catch (err) {
             dispatch({
                 type: REGISTER_FAIL,
@@ -69,17 +66,18 @@ const AuthState = (props) => {
             const res = await axios.post(
                 'http://localhost:5005/api/auth',
                 data,
-                config,
+                config
             );
 
-            console.log(res)
+            console.log(res);
 
             dispatch({
                 type: LOGIN_SUCCESS,
                 payload: res.data,
             });
-
         } catch (err) {
+            console.error(err.response.data.msg);
+
             dispatch({
                 type: LOGIN_FAIL,
                 payload: err.response.data.msg,
@@ -114,7 +112,8 @@ const AuthState = (props) => {
                 register,
                 clearErrors,
                 logout,
-            }}>
+            }}
+        >
             {props.children}
         </AuthContext.Provider>
     );

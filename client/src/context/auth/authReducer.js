@@ -1,7 +1,6 @@
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -14,6 +13,7 @@ export default (state, action) => {
     switch (action.type) {
         case AUTH_ERROR:
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             return {
                 ...state,
                 token: null,
@@ -24,6 +24,7 @@ export default (state, action) => {
             };
         case REGISTER_SUCCESS:
             localStorage.setItem('token', action.payload.token);
+            localStorage.setItem('user', JSON.stringify(action.payload.user));
             return {
                 ...state,
                 ...action.payload,
@@ -32,6 +33,7 @@ export default (state, action) => {
             };
         case LOGIN_SUCCESS:
             localStorage.setItem('token', action.payload.token);
+            localStorage.setItem('user', JSON.stringify(action.payload.user));
             return {
                 ...state,
                 ...action.payload,
@@ -40,6 +42,7 @@ export default (state, action) => {
             };
         case LOGOUT:
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             return {
                 ...state,
                 token: null,
@@ -50,6 +53,7 @@ export default (state, action) => {
             };
         case REGISTER_FAIL:
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             return {
                 ...state,
                 token: null,
@@ -60,6 +64,7 @@ export default (state, action) => {
             };
         case LOGIN_FAIL:
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             return {
                 ...state,
                 token: null,

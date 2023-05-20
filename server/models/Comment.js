@@ -1,43 +1,47 @@
-const {SchemaTypes: SchemaTypes, Schema: Schema, model: model} = require('mongoose')
+const {
+    SchemaTypes: SchemaTypes,
+    Schema: Schema,
+    model: model,
+} = require('mongoose');
 
 const CommentSchema = new Schema({
-    user:{
+    user: {
         type: SchemaTypes.ObjectId,
-        ref: 'user'
+        ref: 'user',
     },
-    post:{
+    post: {
         type: SchemaTypes.ObjectId,
-        ref: 'post'
+        ref: 'post',
     },
     creator: {
         type: String,
-        required: true
+        required: true,
     },
     body: {
         type: String,
-        required: true
+        required: true,
     },
     upvotes: {
         type: Array,
-        default: []
+        default: [],
     },
     downvotes: {
         type: Array,
-        default: []
+        default: [],
     },
     totalvote: {
         type: Number,
-        default: 0
+        default: 0,
     },
     date: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     dateEdited: {
         type: Date,
-        default: null
-    }
-})
+        default: null,
+    },
+});
 
 const Comment = model('comment', CommentSchema);
 

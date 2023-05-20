@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { Fragment, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useMutation, gql } from '@apollo/client';
 
@@ -6,7 +6,7 @@ import Header from '../util/Header';
 
 const AddPost = () => {
     const [createPost, { error }] = useMutation(CREATE_POST, {
-        refetchQueries: [GET_POSTS,'getPosts'],
+        refetchQueries: [GET_POSTS, 'getPosts'],
     });
     const [showModal, setModal] = useState(false);
 
@@ -36,6 +36,11 @@ const AddPost = () => {
         }
     };
 
+    const handleCancel = () => {
+        handleClick();
+        handleReset()
+    };
+
     const handleSubmit = (eve) => {
         eve.preventDefault();
         createPost({
@@ -54,26 +59,30 @@ const AddPost = () => {
         <Fragment>
             {showModal ? (
                 <button
-                    className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '
-                    onClick={handleClick}>
+                    className='text-white bg-steel-blue mt-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '
+                    onClick={handleCancel}
+                >
                     Cancel Add Post
                     <FontAwesomeIcon icon='window-close' className='ml-2' />
                 </button>
             ) : (
                 <button
-                    className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '
-                    onClick={handleClick}>
+                    className='text-white bg-steel-blue mt-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '
+                    onClick={handleClick}
+                >
                     Add Post
                     <FontAwesomeIcon icon='clone' className='ml-2' />
                 </button>
             )}
             <div
                 style={showModal ? {} : { display: 'none' }}
-                className='w-11/12 sm:w-2/3 md:w-1/2 xl:w-1/3 mb-4 self-center'>
+                className='w-11/12 sm:w-2/3 md:w-1/2 xl:w-1/3 mt-4 self-center'
+            >
                 <form
                     className='flex flex-col border-2'
                     onSubmit={(eve) => handleSubmit(eve)}
-                    onReset={handleReset}>
+                    onReset={handleReset}
+                >
                     <Header
                         header={'Add Post'}
                         sx={{ marginBottom: '1.5rem', padding: '.75rem' }}
@@ -89,25 +98,28 @@ const AddPost = () => {
                         onChange={(eve) => handleChange(eve)}
                     />
                     <label className='w-11/12 self-center'>Body:</label>
-                    <input
+                    <textarea
                         required
                         className='w-11/12 self-center border-2 mb-6'
                         type='text'
                         placeholder='Enter a post body'
                         name='body'
                         value={body}
+                        style={{minHeight: '100px'}}
                         onChange={(eve) => handleChange(eve)}
                     />
                     <div className='mb-4 self-center w-11/12'></div>
                     <button
                         type='reset'
-                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '>
+                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300 w-11/12 self-center '
+                    >
                         Clear{' '}
                         <FontAwesomeIcon icon='undo-alt' className='ml-2' />
                     </button>
                     <button
                         type='submit'
-                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '>
+                        className='text-white bg-steel-blue mb-4 border-2 p-1 cursor-pointer hover:bg-blue-300  w-11/12 self-center '
+                    >
                         Add Post
                         <FontAwesomeIcon icon='clone' className='ml-2' />
                     </button>

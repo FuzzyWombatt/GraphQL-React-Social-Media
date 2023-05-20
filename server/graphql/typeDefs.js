@@ -44,7 +44,7 @@ module.exports = gql`
         getUserPosts(userId: ID!): [Post!]!
         getUserComments(userId: ID!): [Comment!]!
     }
-    
+
     type Mutation {
         createPost(title: String!, body: String!): Post!
         deletePost(postId: ID!): String!
@@ -55,5 +55,5 @@ module.exports = gql`
     }
     type Subscription {
         newPost: Post!
-      }
+    }
 `;

@@ -12,8 +12,6 @@ const Comments = ({ postId }) => {
         variables: { postId: postId },
     });
 
-    console.log(postId);
-
     const { isAuthenticated } = authContext;
 
     if (loading) {
@@ -36,9 +34,9 @@ const Comments = ({ postId }) => {
                             <CommentItem key={comment.id} comment={comment} />
                         );
                     })
-                ) : 
-                    <p>No comments in thread</p>
-                }
+                ) : (
+                    <p className='self-center'>No comments in thread</p>
+                )}
             </div>
         </Fragment>
     );
@@ -47,9 +45,9 @@ const Comments = ({ postId }) => {
 const GET_COMMENTS = gql`
     query ($postId: ID!) {
         getComments(postId: $postId) {
-            user,
-            body,
-            post, 
+            user
+            body
+            post
             id
         }
     }
