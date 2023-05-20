@@ -94,7 +94,7 @@ const AddComment = ({ postId }) => {
                         placeholder='Enter a Comment Body'
                         name='body'
                         value={body}
-                        style={{minHeight: '100px'}}
+                        style={{ minHeight: '100px' }}
                         onChange={(eve) => handleChange(eve)}
                     />
                     <button

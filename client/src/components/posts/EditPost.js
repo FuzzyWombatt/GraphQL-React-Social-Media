@@ -1,6 +1,5 @@
 import React, { Fragment, useContext } from 'react';
 import AuthContext from '../../context/auth/authContext';
-import { useMutation, gql } from '@apollo/client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const EditPost = ({ userId }) => {

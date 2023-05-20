@@ -38,7 +38,7 @@ const AddPost = () => {
 
     const handleCancel = () => {
         handleClick();
-        handleReset()
+        handleReset();
     };
 
     const handleSubmit = (eve) => {
@@ -105,7 +105,7 @@ const AddPost = () => {
                         placeholder='Enter a post body'
                         name='body'
                         value={body}
-                        style={{minHeight: '100px'}}
+                        style={{ minHeight: '100px' }}
                         onChange={(eve) => handleChange(eve)}
                     />
                     <div className='mb-4 self-center w-11/12'></div>
