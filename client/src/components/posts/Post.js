@@ -54,4 +54,30 @@ const GET_POST = gql`
     }
 `;
 
+/*
+const MULTI_QUERY = gql`
+query Query($postId: ID!, $getPostPostId2: ID!) {
+    getComments(postId: $postId) {
+      body
+      date
+      downvotes
+      id
+      user
+      upvotes
+      post
+      dateEdited
+      totalvote
+    }
+    getPost(postId: $getPostPostId2) {
+      totalVote
+    }
+  }
+  `
+
+{variables: {
+  "postId": "61ddf72bf8bc927ab92fdacd",
+  "getPostPostId2": "61ddf72bf8bc927ab92fdacd"
+}}
+*/
+
 export default Post;

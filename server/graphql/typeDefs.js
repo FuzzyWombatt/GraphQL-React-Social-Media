@@ -11,10 +11,10 @@ module.exports = gql`
         body: String!
         upvotes: [ID!]!
         downvotes: [ID!]!
-        totalVote: Int!
+        totalVote: Int
         commentCount: Int!
         date: Date!
-        dateEdited: Date!
+        dateEdited: Date
     }
 
     type Comment {
@@ -24,9 +24,9 @@ module.exports = gql`
         body: String!
         upvotes: [ID!]!
         downvotes: [ID!]!
-        totalVote: Int!
+        totalvote: Int!
         date: Date!
-        dateEdited: Date!
+        dateEdited: Date
     }
 
     type User {
